@@ -1,1 +1,1 @@
-# Django-CRUDE-film-APP
+# Django-CRUD-film-App
