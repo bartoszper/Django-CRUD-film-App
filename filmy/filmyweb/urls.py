@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.wszystkie_filmy),
     path('nowy/', views.nowy_film),
     path('edytuj/<int:id>/', views.edytuj_film),
+    path('usun/<int:id>/', views.usun_film),
 ]
