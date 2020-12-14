@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Film
 from .forms import FilmForm
@@ -39,4 +39,4 @@ def usun_film(request,id):
         film.delete()
         return redirect(wszystkie_filmy)
 
-    return render(request, 'potwierdz.html',{'film':form})
+    return render(request, 'potwierdz.html',{'film': film })

@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Czy na pewno chcesz usunąć "{{ film.tytul }}"" film?</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit">Usuń Film</button>
+    </form>
 </body>
 </html>
