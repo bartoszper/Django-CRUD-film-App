@@ -1,15 +1,17 @@
-* {
-    background: cornflowerblue;
-}
-
-h1 {
-    color: blue;
-}
-
-p {
-    color: khaki;
-}
-
 body {
     padding: 2rem;
+    
+}
+
+.btn {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.btn1 {
+    margin-top: 65px;
+    margin-bottom: 0px;
+}
+.jumbotron {
+    padding-bottom: 15px;
 }

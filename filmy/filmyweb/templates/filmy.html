@@ -3,21 +3,33 @@
 {% block tytul %}Lista Filmów {% endblock %}
 
 {% block strona %}
-    {% if user.is_authenticated %}
-        <h3>Witaj {{user.username}}!</h3>
-        <a href="{% url 'logout' %}">Wyloguj</a>
-    {% else %}
-        <a href="{% url 'login' %}">Zaloguj</a>
-    {% endif%}
+    <div class="jumbotron">
+        {% if user.is_authenticated %}
+            <h1 class="display-4">Witaj {{user.username}}!</h1>
+            <a href="{% url 'logout' %}"><button type="submit" class="btn btn1 btn-primary"><i class="fas fa-sign-out-alt"></i>Wyloguj </button></a>
+        {% else %}
+            <a href="{% url 'login' %}">Zaloguj</a>
+        {% endif%}
+            
+     </div>
+        
 
     <hr>
 
     <a href="{% url 'nowy_film' %}">Nowy Film</a>
     <h1>Moje filmy</h1>
+
     {% for film in filmy %}
-    <p>{{film}}</p>
-    <a href="{% url 'edytuj_film' film.id %}">Edytuj</a>
-    <a href="{% url 'usun_film' film.id %}">Usuń</a>
+    <div class="card" style="width: 26rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{film}}</h5>
+          <p class="card-text">{{film.opis}}</p>
+          <a href="{% url 'edytuj_film' film.id %}"><i class="fas fa-edit"></i>Edytuj</a>
+          <a href="{% url 'usun_film' film.id %}"><i class="far fa-trash-alt"></i>Usuń</a>
+         
+        </div>
+      </div>
+    
     {% endfor%}
 
 {% endblock %}

@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'glowny.html' %}
+
+
+{% block tytul %}Zmień Film {% endblock %}
+
+{% block strona %}
+
     <h1>Czy na pewno chcesz usunąć "{{ film.tytul }}"" film?</h1>
     <form action="" method="POST">
         {% csrf_token %}
-        <button type="submit">Usuń Film</button>
+        <button type="submit" class="btn btn-primary usun">Usuń Film</button>
     </form>
-    <a href="{% url 'wszystkie_filmy'%}"><button type="submit">Cofnij</button></a>
-</body>
-</html>
+    <a href="{% url 'wszystkie_filmy'%}"><button type="submit" class="btn btn-primary cofnij">Cofnij</button></a>
+
+{% endblock %}

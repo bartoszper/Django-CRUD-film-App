@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Zaloguj</button>
-    </form>
-</body>
-</html>
+
+{% extends 'glowny.html' %}
+{% load bootstrap %}
+
+{% block tytul %}Zmień Film {% endblock %}
+
+{% block strona %}
+
+<div class="card" style="width: 27rem;">
+    <div class="card-body">
+        <h5 class="card-title">Logowanie</h5>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <button class="btn btn-primary" type="submit">Zaloguj  <i class="fas fa-sign-in-alt"></i></button>
+        </form>
+        </div>
+      </div>
+    {% endblock %}
