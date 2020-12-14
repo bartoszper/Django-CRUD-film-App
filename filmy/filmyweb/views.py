@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Film
 from .forms import FilmForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -11,6 +12,7 @@ def wszystkie_filmy(request):
 
 
 #Formularz dodawania nowych filmów do bazy danych
+@login_required
 def nowy_film(request):
     form = FilmForm(request.POST or None, request.FILES or None)
 
@@ -21,6 +23,7 @@ def nowy_film(request):
     return render(request, 'nowy_film.html',{'form':form})
 
 #Edytuje istniejący film.
+@login_required
 def edytuj_film(request,id):
     film = get_object_or_404(Film, pk=id)
     form = FilmForm(request.POST or None, request.FILES or None, instance=film)
@@ -32,6 +35,7 @@ def edytuj_film(request,id):
     return render(request, 'nowy_film.html',{'form':form})
 
 #Funkcja usówa filmy
+@login_required
 def usun_film(request,id):
     film = get_object_or_404(Film, pk=id)
 

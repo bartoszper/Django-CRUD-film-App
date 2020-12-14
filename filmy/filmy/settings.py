@@ -128,3 +128,11 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = 'moje_media'
+
+LOGIN_URL = 'login'
+
+#Widok po zalogowaniu
+LOGIN_REDIRECT_URL = 'wszystkie_filmy'
+
+#widok po wylogowaniu
+LOGOUT_REDIRECT_URL = 'login'
