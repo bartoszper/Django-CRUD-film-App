@@ -15,3 +15,11 @@ body {
 .jumbotron {
     padding-bottom: 15px;
 }
+
+.film {
+    float: left;
+    margin-right: 15px;
+}
+.ocena {
+    color: rgb(224, 191, 0);
+}

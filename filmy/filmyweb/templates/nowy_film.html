@@ -6,13 +6,27 @@
 
 {% block strona %}
 
+<div class="card" style="width: 27rem;">
+    <div class="card-body">
+        {% if nowy %}
+        <h5 class="card-title">Dodaj film</h5>
+        {% else %}
+        <h5 class="card-title">Zmodyfikuj</h5>
+        {% endif %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            
+            {% if nowy %}
+            <button type="submit" class="btn btn-primary">Dodaj Film</button>
+            {% else %}
+            <button type="submit" class="btn btn-primary">Zmień</button>
+            {% endif %}
 
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|bootstrap }}
-    
-        <button type="submit" class="btn btn-primary">Dodaj Film</button>
-    </form>
-    <a href="{% url 'wszystkie_filmy'%}"><button type="submit" class="btn btn-primary">Cofnij</button></a>
+        </form>
+        <a href="{% url 'wszystkie_filmy'%}"><button type="submit" class="btn btn-primary">Cofnij</button></a>
+    </div>
+</div>
 
 {% endblock %}

@@ -5,10 +5,16 @@
 {% block strona %}
     <div class="jumbotron">
         {% if user.is_authenticated %}
+
             <h1 class="display-4">Witaj {{user.username}}!</h1>
+            <p>Witam na moim filmowym blogu!</p>
             <a href="{% url 'logout' %}"><button type="submit" class="btn btn1 btn-primary"><i class="fas fa-sign-out-alt"></i>Wyloguj </button></a>
+
         {% else %}
-            <a href="{% url 'login' %}">Zaloguj</a>
+
+            <h1 class="display-4">Witaj Nieznajomy!</h1>
+            <a href="{% url 'logout' %}"><button type="submit" class="btn btn-success"><i class="fas fa-user"></i>  Zaloguj </button></a>
+           
         {% endif%}
             
      </div>
@@ -16,14 +22,22 @@
 
     <hr>
 
-    <a href="{% url 'nowy_film' %}">Nowy Film</a>
-    <h1>Moje filmy</h1>
+    <a class="btn btn-primary" href="{% url 'nowy_film' %}">Nowy Film <i class="fas fa-plus"></i></a>
+    <br>
+    <hr>
+    <br>
+    <h4>Moje ulubione filmy: </h4>
+    <br>
+    
 
     {% for film in filmy %}
-    <div class="card" style="width: 26rem;">
+    <div class="card" style="width: 36rem;">
         <div class="card-body">
-          <h5 class="card-title">{{film}}</h5>
+          <img src="/media%20/{{ film.plakat }}" alt="" class="film">
+          <h5 class="card-title">{{film.tytul}}</h5>
           <p class="card-text">{{film.opis}}</p>
+          <p>Rok: <strong>{{film.rok}}</strong></p>
+          <p>Ocena: <span class="ocena"><strong>{{film.imdb_rating}} </strong><i class="fas fa-star"></i></span></p>
           <a href="{% url 'edytuj_film' film.id %}"><i class="fas fa-edit"></i>Edytuj</a>
           <a href="{% url 'usun_film' film.id %}"><i class="far fa-trash-alt"></i>Usuń</a>
          

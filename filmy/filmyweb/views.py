@@ -20,7 +20,7 @@ def nowy_film(request):
         form.save(commit = True)
         return redirect(wszystkie_filmy)
 
-    return render(request, 'nowy_film.html',{'form':form})
+    return render(request, 'nowy_film.html',{'form':form, 'nowy':True})
 
 #Edytuje istniejący film.
 @login_required
@@ -32,7 +32,7 @@ def edytuj_film(request,id):
         form.save(commit = True)
         return redirect(wszystkie_filmy)
 
-    return render(request, 'nowy_film.html',{'form':form})
+    return render(request, 'nowy_film.html',{'form':form, 'nowy':False})
 
 #Funkcja usówa filmy
 @login_required
