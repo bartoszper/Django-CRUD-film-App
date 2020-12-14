@@ -13,5 +13,6 @@ def nowy_film(request):
     form = FilmForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
-        form.save()
+        form.save(commit = True)
+        form = FilmForm()
     return render(request, 'nowy_film.html',{'form':form})
