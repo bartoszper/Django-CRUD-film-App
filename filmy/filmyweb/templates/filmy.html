@@ -33,7 +33,7 @@
     {% for film in filmy %}
     <div class="card" style="width: 36rem;">
         <div class="card-body">
-          <img src="/media%20/{{ film.plakat }}" alt="" class="film">
+          <img src="/media/{{ film.plakat }}" alt="" class="film">
           <h5 class="card-title">{{film.tytul}}</h5>
           <p class="card-text">{{film.opis}}</p>
           <p>Rok: <strong>{{film.rok}}</strong></p>
@@ -45,5 +45,24 @@
       </div>
     
     {% endfor%}
+
+    <div class="pagination">
+        <div class="section-inner clearfix">
+            <p>
+                {% if filmy.has_previous %}
+                    <a class="btn btn-primary" href="?page=1">Pierwsza</a>
+                    <a class="btn btn-primary" href="?page={{ filmy.previous_page_number }}"> < Poprzednia</a>
+                {% endif %}
+                
+                <span>Strona {{ filmy.number }} z {{ filmy.paginator.num_pages }}</span>
+
+                {% if filmy.has_next %}
+                    <a class="btn btn-primary" href="?page={{ filmy.next_page_number}}">Następna ></a>
+                    <a class="btn btn-primary" href="?page={{ filmy.paginator.num_pages}}">Ostatnia</a>
+                {% endif %}
+    
+            </p>
+        </div>
+    </div>
 
 {% endblock %}

@@ -3,11 +3,15 @@ from django.http import HttpResponse
 from .models import Film
 from .forms import FilmForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 def wszystkie_filmy(request):
     test = Film.objects.all()
+    paginator = Paginator(test,4)
+    page = request.GET.get('page')
+    test = paginator.get_page(page)
     return render(request, 'filmy.html', {'filmy':test})
 
 
