@@ -9,9 +9,12 @@
     <title>Filmy</title>
 </head>
 <body>
+    <a href="{% url 'nowy_film' %}">Nowy Film</a>
     <h1>Moje filmy</h1>
     {% for film in filmy %}
-    <p>{{film.plakat}}</p>
+    <p>{{film}}</p>
+    <a href="{% url 'edytuj_film' film.id %}">Edytuj</a>
+    <a href="{% url 'usun_film' film.id %}">Usuń</a>
     {% endfor%}
 
 </body>
