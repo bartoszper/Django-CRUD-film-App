@@ -9,6 +9,15 @@
     <title>Filmy</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+        <h3>Witaj {{user.username}}!</h3>
+        <a href="{% url 'logout' %}">Wyloguj</a>
+    {% else %}
+        <a href="{% url 'login' %}">Zaloguj</a>
+    {% endif%}
+
+    <hr>
+
     <a href="{% url 'nowy_film' %}">Nowy Film</a>
     <h1>Moje filmy</h1>
     {% for film in filmy %}
