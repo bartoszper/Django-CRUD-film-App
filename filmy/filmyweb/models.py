@@ -1,19 +1,14 @@
 from django.db import models
 
-class DodatkoweInfo(models.Model):
-    GATUNEK = {
-        (0, 'Inny'),
-        (1, 'Horror'),
-        (2, 'Komedia'),
-        (3, 'Sci-Fy'),
-        (4, 'Dramat'),
-    }
+class Gatunek(models.Model):
+    gatunek = models.CharField(max_length=40, blank=True, null=True)
 
-    czas_trwania = models.PositiveSmallIntegerField(default=0)
-    gatunek = models.PositiveSmallIntegerField(default = 0, choices= GATUNEK )
+    def __str__(self):
+        return self.gatunek
 
 
 class Film(models.Model):
+    gatunek = models.ForeignKey(Gatunek, on_delete=models.CASCADE, null=True)
     tytul = models.CharField(max_length=100)
     rok = models.PositiveSmallIntegerField(default=2000, blank=True)
     opis = models.TextField(default='', blank=True)
@@ -21,7 +16,12 @@ class Film(models.Model):
     imdb_rating = models.DecimalField(max_digits=4, decimal_places=2,null=True, blank = True)
     plakat = models.ImageField(upload_to='plakaty', null=True, blank =
     True)
-    dodatkoweinfo = models.OneToOneField(DodatkoweInfo, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.tytul
+
+class Ocena(models.Model):
+    recenzja = models.TextField(blank=True, null=True)
+    gwiazdki = models.PositiveSmallIntegerField(blank = True, null=True)
+    film = models.ForeignKey(Film, on_delete=models.CASCADE, null=True, blank=True)
