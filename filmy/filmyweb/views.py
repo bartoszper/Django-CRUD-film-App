@@ -4,8 +4,23 @@ from .models import Film
 from .forms import FilmForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from rest_framework import viewsets
+from .serializers import UserSerializer, FilmSerializer
+from django.contrib.auth.models import User
 
 # Create your views here.
+
+class UserView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class FilmView(viewsets.ModelViewSet):
+    queryset = Film.objects.all()
+    serializer_class = FilmSerializer
+
+
+
+
 
 def wszystkie_filmy(request):
     test = Film.objects.all()
